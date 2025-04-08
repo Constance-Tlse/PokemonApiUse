@@ -11,7 +11,7 @@ function MakeCard() {
     const [DataPokemon, setDataPokemon] = useState<DataPokemon | null>(null);
 
     function callpokemondata () {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=3')
+        fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
         .then(response => response.json())
         .then((res) => {setDataPokemon(res.results)})
 
@@ -20,8 +20,6 @@ function MakeCard() {
     useEffect(() => {
         callpokemondata()
     }, []);
-
-
 
     console.log(DataPokemon)
 
@@ -32,6 +30,7 @@ function MakeCard() {
                 <p>n° {String(index + 1).padStart(4, '0')} </p>
                 <button type="button" key={pokemon.name} onClick={() => setDataPokemon(pokemon.name) }>{pokemon.name}</button>
             </section>)}
+
        </>
     )
 }
